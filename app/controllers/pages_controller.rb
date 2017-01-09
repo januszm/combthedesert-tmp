@@ -10,4 +10,8 @@ class PagesController < ApplicationController
     render json: @page
   end
 
+  def scrape_url
+    ScrapePageUrl.new(params[:url]).call
+  end
+
 end

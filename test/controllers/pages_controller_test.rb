@@ -14,4 +14,10 @@ class PagesControllerTest < ActionDispatch::IntegrationTest
     response.body == page.to_json(only: [:id, :url, :content])
   end
 
+  test 'should scrape page url' do
+    url = 'http://example.com'
+    post scrape_url_pages_url, params: { url: url }
+    assert_response :success
+  end
+
 end
