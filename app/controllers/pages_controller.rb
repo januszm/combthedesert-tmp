@@ -11,7 +11,7 @@ class PagesController < ApplicationController
   end
 
   def scrape_url
-    ScrapePageUrl.new(params[:url]).call
+    ScrapePageJob.perform_later(params[:url])
   end
 
 end

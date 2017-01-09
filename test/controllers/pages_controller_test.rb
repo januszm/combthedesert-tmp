@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class PagesControllerTest < ActionDispatch::IntegrationTest
+  include ActiveJob::TestHelper
 
   test 'should get index' do
     get root_url
@@ -14,10 +15,12 @@ class PagesControllerTest < ActionDispatch::IntegrationTest
     response.body == page.to_json(only: [:id, :url, :content])
   end
 
-  test 'should scrape page url' do
+  test 'should enqueue scrape page job' do
     url = 'http://example.com'
-    post scrape_url_pages_url, params: { url: url }
-    assert_response :success
+    assert_enqueued_with(job: ScrapePageJob) do
+      post scrape_url_pages_url, params: { url: url }
+      assert_response :success
+    end
   end
 
 end
