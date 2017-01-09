@@ -12,6 +12,7 @@ class PagesController < ApplicationController
 
   def scrape_url
     ScrapePageJob.perform_later(params[:url])
+    render json: { message: 'Scrape job submitted!' }
   end
 
 end
