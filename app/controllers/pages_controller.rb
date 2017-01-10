@@ -11,8 +11,15 @@ class PagesController < ApplicationController
   end
 
   def scrape_url
-    ScrapePageJob.perform_later(params[:url])
-    render json: { message: 'Scrape job submitted!' }
+    if params[:url] =~ URI::regexp
+      ScrapePageJob.perform_later(params[:url])
+      message = 'Scrape job submitted!'
+      status = :ok
+    else
+      message = 'Incorrect URL'
+      status = :bad_request
+    end
+    render json: { message: message }, status: status
   end
 
 end
