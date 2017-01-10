@@ -12,6 +12,7 @@ gem 'rails', '~> 5.0.1'
 gem 'sqlite3'
 gem 'puma', '~> 3.0'
 
+gem 'paper_trail'
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
