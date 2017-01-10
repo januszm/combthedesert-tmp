@@ -1,3 +1,5 @@
+[![Code Climate](https://codeclimate.com/github/januszm/combthedesert-tmp/badges/gpa.svg)](https://codeclimate.com/github/januszm/combthedesert-tmp)
+
 # README
 
 CombTheDesert!, a tiny RESTful API to index a page's content. It parses the page content and stores what's found inside the tags h1, h2 and h3 and the links.
