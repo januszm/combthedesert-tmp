@@ -25,7 +25,7 @@ class ScrapePageUrl
     html = open(@url)
   rescue OpenURI::HTTPError => error
     return { error: error.io.status }
-  rescue Exception => error
+  rescue StandardError => error
     return { error: [error.message] }
   end
 
