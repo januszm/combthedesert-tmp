@@ -22,7 +22,7 @@ class ScrapePageUrl
   private
 
   def open_url
-    html = open(@url)
+    open(@url)
   rescue OpenURI::HTTPError => error
     return { error: error.io.status }
   rescue StandardError => error
